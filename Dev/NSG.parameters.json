@@ -6,7 +6,8 @@
             "value": "subnet"
         },
         "count": { "value": 4 },
-        "virtualNetworkResourceGroupName": { "value": "ssuse-cloudeng01-rg" }
+        "virtualNetworkResourceGroupName": { "value": "ssuse-cloudeng01-rg" },
+        "virtualNetworkName": { "value": "ssuse-vnet01" }
 
     }
 }
