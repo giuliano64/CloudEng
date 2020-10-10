@@ -74,6 +74,11 @@ stages:
         csmParametersFile: Dev/vnet.parameters.json
         deploymentMode: Incremental
 
+  - job: 'deployNSG'
+    pool:
+      name: 'Azure Pipelines'
+      vmImage: 'windows-2019'
+    steps:        
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy NSGs via ARM Templates'
       inputs:
