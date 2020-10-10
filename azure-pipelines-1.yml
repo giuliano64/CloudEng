@@ -1,0 +1,64 @@
+trigger:
+- master
+
+stages:
+- stage: build
+  jobs:
+  - job: 'BuildAndPublish'
+    pool:
+      name: 'Azure Pipelines'
+      vmImage: 'windows-2019'
+    steps:
+    - task: AzureFileCopy@4
+      displayName: 'AzureBlob File Copy'
+      inputs:
+        SourcePath: Dev/vnet.parameters.json
+        azureSubscription: 'VS-FGC-AZ-Conn'
+        Destination: AzureBlob
+        storage: tempsafgc
+        ContainerName: blob
+      enabled: false
+
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'ARM Template deployment: Resource Group scope'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployVnet.json
+        csmParametersFile: Dev/vnet.parameters.json
+        deploymentMode: Validation
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Pipeline Artifact'
+      inputs:
+        artifact: 'CloudEng-$(Build.BuildNumber)'
+
+- stage: deploy
+  jobs:
+  - job: 'deployVnet'
+    pool:
+      name: 'Azure Pipelines'
+      vmImage: 'windows-2019'
+    steps:
+    - task: AzureFileCopy@4
+      displayName: 'AzureBlob File Copy'
+      inputs:
+        SourcePath: Dev/vnet.parameters.json
+        azureSubscription: 'VS-FGC-AZ-Conn'
+        Destination: AzureBlob
+        storage: tempsafgc
+        ContainerName: blob
+      enabled: false
+
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'ARM Template deployment: Resource Group scope'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployVnet.json
+        csmParametersFile: Dev/vnet.parameters.json
+        deploymentMode: Incremental
