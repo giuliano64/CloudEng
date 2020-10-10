@@ -6,7 +6,8 @@ stages:
   jobs:
   - job: 'BuildAndPublish'
     pool:
-      name: Azure Pipelines
+      name: 'Azure Pipelines'
+      vmImage: 'windows-2019'
     steps:
     - task: AzureFileCopy@4
       displayName: 'AzureBlob File Copy'
@@ -38,7 +39,8 @@ stages:
   jobs:
   - job: 'deployVnet'
     pool:
-      name: Azure Pipelines
+      name: 'Azure Pipelines'
+      vmImage: 'windows-2019'
     steps:
     - task: AzureFileCopy@4
       displayName: 'AzureBlob File Copy'
