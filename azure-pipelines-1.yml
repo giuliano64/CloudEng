@@ -61,4 +61,4 @@ stages:
         location: 'East US'
         csmFile: Templates/deployVnet.json
         csmParametersFile: Dev/vnet.parameters.json
-        deploymentMode: Validation
+        deploymentMode: Incremental
