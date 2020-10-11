@@ -148,7 +148,7 @@ stages:
       inputs:
         azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
         subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
-        overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
+        overrideParameters: -existingServicePrincipalClientId $(SPNObjectID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployAKS.json
