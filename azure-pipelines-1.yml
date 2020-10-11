@@ -124,8 +124,8 @@ stages:
         subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
-        csmFile: Templates/deployTableSA.json
+        csmFile: Templates/deployTableStorage.json
         csmParametersFile: Dev/tableStorage.parameters.json
         deploymentMode: Incremental
 
-        
+
