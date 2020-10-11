@@ -4,7 +4,7 @@
     "parameters": {
 
         "storageAccountName": {
-            "value": "saBlob"
+            "value": "sablob"
         },
 
         "containerName": {

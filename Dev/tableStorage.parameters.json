@@ -4,7 +4,7 @@
     "parameters": {
 
         "storageAccountName": {
-            "value": "saTable"
+            "value": "satable"
         },
 
         "location": {
@@ -12,7 +12,7 @@
 
         },
         "tableName": {
-            "value": "TableStorage"
+            "value": "tablestorage"
 
         }
     }
