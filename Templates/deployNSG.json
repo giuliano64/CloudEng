@@ -36,6 +36,7 @@
       "type": "int",
       "defaultValue": "default"
     },
+
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
@@ -54,13 +55,14 @@
   "resources": [
     {
       "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2020-05-01",
       "name": "[concat(parameters('nsgName'),copyIndex(1))]",
-      "location": "[parameters('location')]",
-       "copy": { 
+     "copy": { 
          "name": "[parameters('nsgName')]", 
          "count": "[parameters('count')]" 
-      }, 
-      "apiVersion": "2020-05-01",
+      },
+        "location": "[parameters('location')]", 
+      
       "properties": {
         "securityRules": [
           {
@@ -88,6 +90,10 @@
       "dependsOn": [
         "[concat(parameters('nsgName'),copyIndex(1))]"
       ],
+       "copy": { 
+         "name": "[parameters('subnetName')]", 
+         "count": "[parameters('count')]" 
+      },
       "properties": {
         "mode": "Incremental",
         "templateLink": {
