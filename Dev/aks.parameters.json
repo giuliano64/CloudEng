@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceName": {
+            "value": "cloudEng-aks"
+        },
+        "dnsPrefix": {
+            "value": "cloudengfgc"
+        },
+        "builtInRoleType": {
+            "value": "Contributor"
+        },
+        "existingServicePrincipalObjectId": {
+            "value": "overridedByPipeline"
+        },
+        "existingServicePrincipalClientId": {
+            "value": "overridedByPipeline"
+        },
+        "existingServicePrincipalClientSecret": {
+            "value": "overridedByPipeline"
+        },
+        "existingVirtualNetworkName": {
+            "value": "ssuse-vnet01"
+        },
+        "existingVirtualNetworkResourceGroup": {
+            "value": "ssuse-cloudeng01-rg"
+        },
+        "existingSubnetName": {
+            "value": "ssuse-subnet1"
+        },
+        "dnsServiceIP": {
+
+            "defaultValue": "10.0.1.10"
+        }
+    }
+}
