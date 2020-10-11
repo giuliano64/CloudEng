@@ -108,7 +108,7 @@
             "value": "[concat(parameters('subnetName'),copyIndex(1))]"
           },
           "subnetAddressPrefix": {
-            "value": "[reference(resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName')), '2018-03-01').addressPrefix]"
+            "value": "[reference(resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'),copyIndex(1)), '2018-03-01').addressPrefix]"
           },
           "nsgId": {
             "value": "[resourceId('Microsoft.Network/networkSecurityGroups', concat(parameters('nsgName'),copyIndex(1)))]"
