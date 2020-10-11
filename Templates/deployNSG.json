@@ -56,7 +56,7 @@
     {
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2020-05-01",
-      "name": "[concat('Deploy-',parameters('nsgName'),copyIndex())]",
+      "name": "[concat('Deploy-',parameters('nsgName'),copyIndex(1))]",
      "copy": { 
          "name": "[parameters('nsgName')]", 
          "count": "[parameters('count')]" 
