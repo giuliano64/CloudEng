@@ -94,7 +94,7 @@
        "copy": { 
          "name": "[parameters('subnetName')]", 
          "count": "[parameters('count')]",
-          "mode": "serial", 
+          "mode": "serial"
       },
       "properties": {
         "mode": "Incremental",
