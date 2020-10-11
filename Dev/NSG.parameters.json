@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subnetName": {
-            "value": "subnet"
+            "value": "ssuse-subnet"
         },
         "count": { "value": 4 },
         "virtualNetworkResourceGroupName": { "value": "ssuse-cloudeng01-rg" },
