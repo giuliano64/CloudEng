@@ -41,6 +41,27 @@ stages:
         csmParametersFile: Dev/NSG.parameters.json
         deploymentMode: Validation
 
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy Blob Storage via ARM Templates'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployBlobStorage.json
+        csmParametersFile: Dev/blobStorage.parameters.json
+        deploymentMode: Validation
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy Table Storage via ARM Templates'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployTableSA.json
+        csmParametersFile: Dev/tableStorage.parameters.json
+        deploymentMode: Validation
+
     - task: PublishPipelineArtifact@1
       displayName: 'Publish Pipeline Artifact'
       inputs:
@@ -48,7 +69,7 @@ stages:
 
 - stage: deploy
   jobs:
-  - job: 'deployVnet'
+  - job: 'deployInfrastructure'
     pool:
       name: 'Azure Pipelines'
       vmImage: 'windows-2019'
@@ -84,3 +105,27 @@ stages:
         csmFile: Templates/deployNSG.json
         csmParametersFile: Dev/NSG.parameters.json
         deploymentMode: Incremental
+
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy Blob Storage via ARM Templates'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployBlobStorage.json
+        csmParametersFile: Dev/blobStorage.parameters.json
+        deploymentMode: Incremental
+
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy Table Storage via ARM Templates'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployTableSA.json
+        csmParametersFile: Dev/tableStorage.parameters.json
+        deploymentMode: Incremental
+
+        
