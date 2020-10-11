@@ -47,11 +47,48 @@
         "kind": "StorageV2",
         "properties": {}
       },
-      {
-        "name": "[parameters('tableName')]",
-        "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
-        "apiVersion": "2019-06-01"
-       }
+{
+    "name": "[concat(parameters('storageAccountname'),'/', parameters('tableName'))]",
+    "type": "Microsoft.Storage/storageAccounts/tableServices",
+    "apiVersion": "2019-06-01",
+    "properties": {
+        "cors": {
+            "corsRules": [
+                {
+                    "allowedOrigins": [
+                        "*"
+                    ],
+                    "allowedMethods": [
+                        "PUT",
+                        "GET",
+                        "POST"
+                    ],
+                    "maxAgeInSeconds": 0,
+                    "exposedHeaders": [
+                        "*"
+                    ],
+                    "allowedHeaders": [
+                        "*"
+                    ]
+                }
+            ]
+        }
+    },
+    "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+    ],
+    "resources": []
+},
+{
+    "name": "[concat(parameters('storageAccountName'),'/default/',parameters('tableName'))]",
+    "type": "Microsoft.Storage/storageAccounts/tableServices/tables",
+    "apiVersion": "2019-06-01",
+    "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/tableServices', parameters('storageAccountName'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+    ]
+}
+
     ],
     "outputs": {
       "storageAccountName": {
