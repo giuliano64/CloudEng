@@ -1,5 +1,7 @@
 trigger:
 - master
+variables:
+- group: dev
 
 stages:
 - stage: build
@@ -51,6 +53,7 @@ stages:
         csmFile: Templates/deployBlobStorage.json
         csmParametersFile: Dev/blobStorage.parameters.json
         deploymentMode: Validation
+
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Table Storage via ARM Templates'
       inputs:
@@ -60,6 +63,18 @@ stages:
         location: 'East US'
         csmFile: Templates/deployTableSA.json
         csmParametersFile: Dev/tableStorage.parameters.json
+        deploymentMode: Validation
+
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy AKS Cluster'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployAKS.json
+        csmParametersFile: Dev/aks.parameters.json
         deploymentMode: Validation
 
     - task: PublishPipelineArtifact@1
@@ -126,6 +141,18 @@ stages:
         location: 'East US'
         csmFile: Templates/deploytableSA.json
         csmParametersFile: Dev/tableStorage.parameters.json
+        deploymentMode: Incremental
+
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy AKS Cluster'
+      inputs:
+        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
+        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
+        resourceGroupName: 'ssuse-cloudeng01-rg'
+        location: 'East US'
+        csmFile: Templates/deployAKS.json
+        csmParametersFile: Dev/aks.parameters.json
         deploymentMode: Incremental
 
 
