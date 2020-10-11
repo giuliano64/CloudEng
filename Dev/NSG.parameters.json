@@ -7,7 +7,7 @@
         },
         "count": { "value": 4 },
         "virtualNetworkResourceGroupName": { "value": "ssuse-cloudeng01-rg" },
-        "virtualNetworkName": { "value": "ssuse-vnet01" }
-
+        "virtualNetworkName": { "value": "ssuse-vnet01" },
+        "nsgName": { "value": "ssuse1Nsg" }
     }
 }
