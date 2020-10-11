@@ -43,7 +43,7 @@
    
     {
     "type": "tableServices/tables",
-    "apiVersion": "2019–06–01",
+    "apiVersion": "2019-06-01",
     "name": "[concat('default/', parameters('tableName'))]",
     "dependsOn": [
     "[parameters('storageAccountName')]"
