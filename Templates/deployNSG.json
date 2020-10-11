@@ -84,7 +84,7 @@
     },
     {
       "apiVersion": "2020-06-01",
-      "name": "[concat(,parameters('nsgName'),copyIndex(1))]",
+      "name": "[concat(parameters('nsgName'),copyIndex(1))]",
       "type": "Microsoft.Resources/deployments",
       "resourceGroup": "[parameters('virtualNetworkResourceGroupName')]",
       "dependsOn": [
