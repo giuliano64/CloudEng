@@ -203,7 +203,7 @@
             "apiVersion": "2020-07-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "ClusterSubnetRoleAssignmentDeployment"
+                "[guid(resourceGroup().id)]"
             ],
             "properties": {
                 "kubernetesVersion": "[parameters('kubernetesVersion')]",
