@@ -37,7 +37,7 @@
             "value": "172.17.0.1/16"
         },
         "serviceCidr": {
-            "value": "11.0.1.0/16"
+            "value": "11.0.0.0/16"
         },
         "networkPlugin": {
             "value": "kubenet"
