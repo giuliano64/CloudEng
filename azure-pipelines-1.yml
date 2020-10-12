@@ -109,7 +109,7 @@ stages:
         csmFile: Templates/deployVnet.json
         csmParametersFile: Dev/vnet.parameters.json
         deploymentMode: Incremental
-
+      enabled: false
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy NSGs via ARM Templates'
       inputs:
