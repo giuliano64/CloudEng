@@ -146,7 +146,6 @@
         "type": "Microsoft.Network/applicationGateways",
         "location": "[parameters('location')]",
         "dependsOn": [
-          "[variables('virtualNetworkName')]",
           "[variables('publicIPAddressName')]"
         ],
         "properties": {
