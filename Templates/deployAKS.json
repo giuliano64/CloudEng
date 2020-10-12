@@ -144,7 +144,7 @@
         },
         "serviceCidr": {
             "type": "string",
-            "defaultValue": "10.0.1.0/24",
+            "defaultValue": "10.0.1.0/16",
             "metadata": {
                 "description": "A CIDR notation IP range from which to assign service cluster IPs."
             }},
