@@ -17,10 +17,10 @@
             "value": 2
         },
         "backendIpAddress1": {
-            "value": "193.168.1.5"
+            "value": "193.168.5.5"
         },
         "backendIpAddress2": {
-            "value": "193.168.1.6"
+            "value": "193.168.5.6"
         },
         "wafEnabled": {
             "value": true
