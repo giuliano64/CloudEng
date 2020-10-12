@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+        "vNetAddressPrefix": {
+            "value": "193.168.0.0/16"
+
+        },
+        "vNetSubnetPrefix": {
+            "value": "193.168.5.0/24"
+        },
+        "applicationGatewaySize": {
+            "value": "WAF_v2"
+        },
+        "applicationGatewayCapacity": {
+            "value": 1
+        },
+        "backendIpAddress1": {
+            "value": "193.168.1.5/24"
+        },
+        "wafEnabled": {
+            "value": true
+        },
+        "wafMode": {
+            "value": "Detection"
+        },
+        "wafRuleSetType": {
+            "type": "OWASP"
+        },
+        "wafRuleSetVersion": {
+            "value": "3.0"
+        },
+        "applicationGatewayName": {
+            "value": "cloudEngGW"
+        },
+        "publicIPAddressName": {
+            "type": "cloudEngGWIP"
+        },
+        "virtualNetworkName": {
+            "type": "ssuse-vnet01"
+        },
+        "subnetName": {
+            "type": "ssuse-subnet5"
+        }
+
+    }
+}
