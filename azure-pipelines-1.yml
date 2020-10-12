@@ -78,11 +78,10 @@ stages:
         deploymentMode: Validation
 
     - task: AzureResourceManagerTemplateDeployment@3
-      displayName: 'Deploy AKS Cluster'
+      displayName: 'Deploy WAF'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployWAF.json
@@ -168,11 +167,10 @@ stages:
         deploymentMode: Incremental
 
     - task: AzureResourceManagerTemplateDeployment@3
-      displayName: 'Deploy AKS Cluster'
+      displayName: 'Deploy WAF'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployWAF.json
