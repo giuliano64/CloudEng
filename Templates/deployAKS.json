@@ -142,16 +142,27 @@
                 "description": "Subnet name that will contain the App Service Environment"
             }
         },
-
+        "serviceCidr": {
+            "type": "string",
+            "defaultValue": "10.0.1.0/24",
+            "metadata": {
+                "description": "A CIDR notation IP range from which to assign service cluster IPs."
+            }},
         "dnsServiceIP": {
             "type": "string",
             "defaultValue": "10.0.1.10",
             "metadata": {
                 "description": "Containers DNS server IP address."
             }
-        }
+        },
+          "dockerBridgeCidr": {
+            "type": "string",
+            "defaultValue": "172.17.0.1/16",
+            "metadata": {
+                "description": "A CIDR notation IP for Docker bridge."
+            }
    
-    },
+    }},
     "variables": {
         "builtInRole":{
         "Owner":"[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
@@ -222,8 +233,9 @@
                 },
                 "networkProfile": {
                     "networkPlugin": "[parameters('networkPlugin')]",
-                    "dnsServiceIP": "[parameters('dnsServiceIP')]"
-                    
+                    "serviceCidr": "[parameters('serviceCidr')]",
+                    "dnsServiceIP": "[parameters('dnsServiceIP')]",
+                    "dockerBridgeCidr": "[parameters('dockerBridgeCidr')]"
                 }
             }
         }
