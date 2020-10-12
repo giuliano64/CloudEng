@@ -26,7 +26,7 @@
             "value": "Detection"
         },
         "wafRuleSetType": {
-            "type": "OWASP"
+            "value": "OWASP"
         },
         "wafRuleSetVersion": {
             "value": "3.0"
