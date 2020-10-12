@@ -139,27 +139,7 @@
           "publicIPAllocationMethod": "Static"
         }
       },
-      {
-        "apiVersion": "2020-05-01",
-        "type": "Microsoft.Network/virtualNetworks",
-        "name": "[variables('virtualNetworkName')]",
-        "location": "[parameters('location')]",
-        "properties": {
-          "addressSpace": {
-            "addressPrefixes": [
-              "[parameters('vNetAddressPrefix')]"
-            ]
-          },
-          "subnets": [
-            {
-              "name": "[variables('subnetName')]",
-              "properties": {
-                "addressPrefix": "[parameters('vNetSubnetPrefix')]"
-              }
-            }
-          ]
-        }
-      },
+
       {
         "apiVersion": "2020-05-01",
         "name": "[variables('applicationGatewayName')]",
