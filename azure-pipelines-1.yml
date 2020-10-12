@@ -15,7 +15,7 @@ stages:
       displayName: 'AzureBlob File Copy'
       inputs:
         SourcePath: Dev/vnet.parameters.json
-        azureSubscription: 'VS-FGC-AZ-Conn'
+        azureSubscription: $(serviceConnection)
         Destination: AzureBlob
         storage: tempsafgc
         ContainerName: blob
@@ -24,8 +24,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'ARM Template deployment: Resource Group scope'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployVnet.json
@@ -35,8 +35,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'ARM Template deployment: Resource Group scope'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployNSG.json
@@ -46,8 +46,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Blob Storage via ARM Templates'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployBlobStorage.json
@@ -57,8 +57,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Table Storage via ARM Templates'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployTableSA.json
@@ -68,8 +68,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy AKS Cluster'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
@@ -80,8 +80,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy AKS Cluster'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
@@ -105,7 +105,7 @@ stages:
       displayName: 'AzureBlob File Copy'
       inputs:
         SourcePath: Dev/vnet.parameters.json
-        azureSubscription: 'VS-FGC-AZ-Conn'
+        azureSubscription: $(serviceConnection)
         Destination: AzureBlob
         storage: tempsafgc
         ContainerName: blob
@@ -114,8 +114,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy VNET and Subnets via ARM Template deployment'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployVnet.json
@@ -125,8 +125,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy NSGs via ARM Templates'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployNSG.json
@@ -136,8 +136,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Blob Storage via ARM Templates'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deployBlobStorage.json
@@ -147,8 +147,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Table Storage via ARM Templates'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
         csmFile: Templates/deploytableSA.json
@@ -158,8 +158,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy AKS Cluster'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
@@ -170,8 +170,8 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy AKS Cluster'
       inputs:
-        azureResourceManagerConnection: 'VS-FGC-AZ-Conn'
-        subscriptionId: 'a2bba69c-3f86-4107-bcc4-f4c4ad890005'
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
         overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
         resourceGroupName: 'ssuse-cloudeng01-rg'
         location: 'East US'
