@@ -4,7 +4,7 @@
     "parameters": {
 
         "vNetAddressPrefix": {
-            "value": "193.168.0.0/16"
+            "value": "193.168.5.0/24"
 
         },
         "vNetSubnetPrefix": {
