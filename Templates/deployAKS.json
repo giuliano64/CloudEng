@@ -174,7 +174,7 @@
     "resources": [
             {
             "type": "Microsoft.Resources/deployments",
-            "name": "[guid(resourceGroup().id)]",
+            "name": "ClusterSubnetRoleAssignmentDeployment",
             "apiVersion": "2019-10-01",
             "resourceGroup": "[parameters('existingVirtualNetworkResourceGroup')]",
             "properties": {
@@ -186,7 +186,7 @@
                         {
                             "type": "Microsoft.Network/virtualNetworks/subnets/providers/roleAssignments",
                             "apiVersion": "2020-04-01-preview",
-                            "name": "[concat(parameters('existingVirtualNetworkName'), '/', parameters('existingSubnetName'), '/Microsoft.Authorization/', guid(resourceGroup().id, deployment().name))]",
+                            "name": "[concat(parameters('existingVirtualNetworkName'), '/', parameters('existingSubnetName'), '/Microsoft.Authorization/', guid(resourceGroup().id))]",
                             "properties": {
                                 "roleDefinitionId": "[variables('builtInRole')[parameters('builtInRoleType')]]",
                                 "principalId": "[parameters('existingServicePrincipalObjectId')]",
@@ -203,7 +203,7 @@
             "apiVersion": "2020-07-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[guid(resourceGroup().id)]"
+                "ClusterSubnetRoleAssignmentDeployment"
             ],
             "properties": {
                 "kubernetesVersion": "[parameters('kubernetesVersion')]",
