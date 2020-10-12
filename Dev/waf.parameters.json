@@ -38,10 +38,10 @@
             "value": "cloudEngGWIP"
         },
         "virtualNetworkName": {
-            "type": "ssuse-vnet01"
+            "value": "ssuse-vnet01"
         },
         "subnetName": {
-            "type": "ssuse-subnet5"
+            "value": "ssuse-subnet5"
         }
 
     }
