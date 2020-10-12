@@ -35,7 +35,7 @@
             "value": "cloudEngGW"
         },
         "publicIPAddressName": {
-            "type": "cloudEngGWIP"
+            "value": "cloudEngGWIP"
         },
         "virtualNetworkName": {
             "type": "ssuse-vnet01"
