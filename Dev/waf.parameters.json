@@ -4,11 +4,11 @@
     "parameters": {
 
         "vNetAddressPrefix": {
-            "value": "193.168.5.0/24"
+            "value": "193.168.0.0/16"
 
         },
         "vNetSubnetPrefix": {
-            "value": "193.168.5.0/24"
+            "value": "193.168.5.0/28"
         },
         "applicationGatewaySize": {
             "value": "WAF_v2"
