@@ -116,7 +116,15 @@
       },
       "subnetName":{   
           "type": "string"
-       }
+       },
+        "resourceTags": {
+        "type": "object",
+        "defaultValue": {
+            "Environment": "Dev",
+            "Project": "Tutorial"
+        }
+    }
+
     },
     "variables": {
       "applicationGatewayName": "[parameters('applicationGatewayName')]",
@@ -132,6 +140,7 @@
         "type": "Microsoft.Network/publicIPAddresses",
         "name": "[variables('publicIPAddressName')]",
         "location": "[parameters('location')]",
+        "tags":"[parameters('resourceTags')]",
         "sku": {
           "name": "Standard"
         },
@@ -145,6 +154,7 @@
         "name": "[variables('applicationGatewayName')]",
         "type": "Microsoft.Network/applicationGateways",
         "location": "[parameters('location')]",
+        "tags":"[parameters('resourceTags')]",
         "dependsOn": [
           "[variables('publicIPAddressName')]"
         ],
