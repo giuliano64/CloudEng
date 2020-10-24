@@ -70,7 +70,7 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectID $(SPNObjectID)
+        overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectId $(SPNObjectID)
         resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployAzureKV.json
@@ -174,7 +174,7 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectID $(SPNObjectID)
+        overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectId $(SPNObjectID)
         resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployAzureKV.json

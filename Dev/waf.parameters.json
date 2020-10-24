@@ -14,7 +14,7 @@
             "value": "WAF_v2"
         },
         "applicationGatewayCapacity": {
-            "value": 2
+            "value": 1
         },
         "backendIpAddress1": {
             "value": "193.168.1.5"
@@ -23,7 +23,7 @@
             "value": "193.168.1.6"
         },
         "wafEnabled": {
-            "value": true
+            "value": false
         },
         "wafMode": {
             "value": "Detection"

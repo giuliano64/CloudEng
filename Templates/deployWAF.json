@@ -47,7 +47,7 @@
           9,
           10
         ],
-        "defaultValue": 2,
+        "defaultValue": 1,
         "metadata": {
           "description": "Specifies the number of the application gateway instances."
         }
