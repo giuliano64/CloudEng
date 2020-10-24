@@ -26,7 +26,7 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployVnet.json
         csmParametersFile: Dev/vnet.parameters.json
@@ -37,7 +37,7 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployNSG.json
         csmParametersFile: Dev/NSG.parameters.json
@@ -48,7 +48,7 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployBlobStorage.json
         csmParametersFile: Dev/blobStorage.parameters.json
@@ -59,7 +59,7 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployTableSA.json
         csmParametersFile: Dev/tableStorage.parameters.json
@@ -71,7 +71,7 @@ stages:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
         overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployAKS.json
         csmParametersFile: Dev/aks.parameters.json
@@ -82,7 +82,7 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployWAF.json
         csmParametersFile: Dev/waf.parameters.json
@@ -115,44 +115,47 @@ stages:
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployVnet.json
         csmParametersFile: Dev/vnet.parameters.json
         deploymentMode: Incremental
-      enabled: false
+      enabled: true
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy NSGs via ARM Templates'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployNSG.json
         csmParametersFile: Dev/NSG.parameters.json
         deploymentMode: Incremental
+      enabled: false
 
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Blob Storage via ARM Templates'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployBlobStorage.json
         csmParametersFile: Dev/blobStorage.parameters.json
         deploymentMode: Incremental
+      enabled: false
 
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Table Storage via ARM Templates'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deploytableSA.json
         csmParametersFile: Dev/tableStorage.parameters.json
         deploymentMode: Incremental
+      enabled: false
 
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy AKS Cluster'
@@ -160,22 +163,24 @@ stages:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
         overrideParameters: -existingServicePrincipalClientId $(SPNClientID) -existingServicePrincipalClientSecret $(SPNSecret) -existingServicePrincipalObjectId $(SPNObjectID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployAKS.json
         csmParametersFile: Dev/aks.parameters.json
         deploymentMode: Incremental
+      enabled: false
 
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy WAF'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
         subscriptionId: $(subscriptionID)
-        resourceGroupName: 'ssuse-cloudeng01-rg'
+        resourceGroupName: $(resourceGroup)
         location: 'East US'
         csmFile: Templates/deployWAF.json
         csmParametersFile: Dev/waf.parameters.json
         deploymentMode: Incremental
+      enabled: false
 
 
 
