@@ -73,7 +73,7 @@ stages:
         overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectID $(SPNObjectID)
         resourceGroupName: $(resourceGroup)
         location: 'East US'
-        csmFile: Templates/deployAazureKV.json
+        csmFile: Templates/deployAzureKV.json
         csmParametersFile: Dev/akv.parameters.json
         deploymentMode: Validation
 
@@ -177,7 +177,7 @@ stages:
         overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectID $(SPNObjectID)
         resourceGroupName: $(resourceGroup)
         location: 'East US'
-        csmFile: Templates/deployAazureKV.json
+        csmFile: Templates/deployAzureKV.json
         csmParametersFile: Dev/akv.parameters.json
         deploymentMode: Incremental
 
