@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "keyVaultName": {
-        "value": "GEN-UNIQUE"
+        "value": "use1dev-akv-cloudeng-01"
       },
       "objectId": {
-        "value": "GEN-AZUREAD-OBJECTID"
+        "value": "pipelineOverwritten"
       },
       "secretName": {
-        "value": "GEN-UNIQUE"
+        "value": "pipelineOverwritten"
       },
       "secretValue": {
-        "value": "GEN-UNIQUE"
+        "value": "pipelineOverwritten"
       }
     }
   }
