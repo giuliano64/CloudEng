@@ -66,6 +66,18 @@ stages:
         deploymentMode: Validation
 
     - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy Azure Key Vault'
+      inputs:
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
+        overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectID $(SPNObjectID)
+        resourceGroupName: $(resourceGroup)
+        location: 'East US'
+        csmFile: Templates/deployAazureKV.json
+        csmParametersFile: Dev/akv.parameters.json
+        deploymentMode: Validation
+
+    - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy AKS Cluster'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
@@ -131,7 +143,7 @@ stages:
         csmFile: Templates/deployNSG.json
         csmParametersFile: Dev/NSG.parameters.json
         deploymentMode: Incremental
-      enabled: false
+      enabled: true
 
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy Blob Storage via ARM Templates'
@@ -158,6 +170,18 @@ stages:
       enabled: false
 
     - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'Deploy Azure Key Vault'
+      inputs:
+        azureResourceManagerConnection: $(serviceConnection)
+        subscriptionId: $(subscriptionID)
+        overrideParameters: -secretName $(secretName) -secretValue $(SPNSecret) -objectID $(SPNObjectID)
+        resourceGroupName: $(resourceGroup)
+        location: 'East US'
+        csmFile: Templates/deployAazureKV.json
+        csmParametersFile: Dev/akv.parameters.json
+        deploymentMode: Incremental
+
+    - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy AKS Cluster'
       inputs:
         azureResourceManagerConnection: $(serviceConnection)
@@ -168,7 +192,7 @@ stages:
         csmFile: Templates/deployAKS.json
         csmParametersFile: Dev/aks.parameters.json
         deploymentMode: Incremental
-      enabled: false
+      enabled: true
 
     - task: AzureResourceManagerTemplateDeployment@3
       displayName: 'Deploy WAF'
@@ -180,7 +204,7 @@ stages:
         csmFile: Templates/deployWAF.json
         csmParametersFile: Dev/waf.parameters.json
         deploymentMode: Incremental
-      enabled: false
+      enabled: true
 
 
 
